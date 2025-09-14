@@ -22,6 +22,8 @@ WITH data_analyst_jobs AS (
   WHERE job_title LIKE '%Data Analyst%'
     AND (job_location = 'Anywhere' OR job_work_from_home = TRUE)
     AND salary_year_avg IS NOT NULL
+  order by salary_year_avg desc
+limit 10
 )
 
  
@@ -40,7 +42,8 @@ from skills_job_dim
 
 inner join data_analyst_jobs on skills_job_dim.job_id=data_analyst_jobs.job_id
 inner join skills_dim on skills_job_dim.skill_id=skills_dim.skill_id
+WHERE skills_dim.skills IS NOT NULL
 ORDER BY data_analyst_jobs.salary_year_avg DESC
-LIMIT 10;
+limit 10;
 
 

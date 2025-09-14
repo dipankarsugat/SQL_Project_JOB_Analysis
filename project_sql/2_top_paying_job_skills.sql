@@ -29,6 +29,8 @@ and
 (job_location='Anywhere' or job_work_from_home = True)
 and 
 salary_year_avg is not null
+and 
+skills_dim.skills IS NOT NULL
 
 order by salary_year_avg desc
 limit 10;
