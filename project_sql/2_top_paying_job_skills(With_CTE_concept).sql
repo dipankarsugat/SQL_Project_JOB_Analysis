@@ -15,7 +15,9 @@ WITH data_analyst_jobs AS (
     job_postings_fact.salary_year_avg,
     job_postings_fact.job_posted_date,
     company_dim.name
+
   FROM job_postings_fact
+  
   left join company_dim on job_postings_fact.company_id=company_dim.company_id -- optional if you want to fetch company name from the company_id
   WHERE job_title LIKE '%Data Analyst%'
     AND (job_location = 'Anywhere' OR job_work_from_home = TRUE)
@@ -34,13 +36,7 @@ select
     data_analyst_jobs.name,
     skills_dim.skills
 
-
-
-
 from skills_job_dim
-
-
-  
 
 inner join data_analyst_jobs on skills_job_dim.job_id=data_analyst_jobs.job_id
 inner join skills_dim on skills_job_dim.skill_id=skills_dim.skill_id
