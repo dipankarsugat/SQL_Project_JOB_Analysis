@@ -12,7 +12,7 @@ skills_dim.skills
 
 from job_postings_fact as jb
 
-left join skills_job_dim on jb.job_id=skills_job_dim.job_id
+inner join skills_job_dim on jb.job_id=skills_job_dim.job_id
 inner join skills_dim on skills_job_dim.skill_id=skills_dim.skill_id
 
 where job_title like '%Data Analyst%' 
