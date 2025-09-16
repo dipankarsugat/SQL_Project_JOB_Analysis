@@ -9,7 +9,7 @@ with skilly as (
 
 select
 
-count(jb.job_id) as job_total, Round(avg(jb.salary_year_avg)) as salary_year_avg,
+count(jb.job_id) as job_total, Round(avg(jb.salary_year_avg),0) as salary_year_avg,
 skills_dim.skills
 
 from job_postings_fact as jb
@@ -24,10 +24,13 @@ AND
 salary_year_avg is not null
 
 
-group by skills_dim.skills)
+group by skills_dim.skills
+
+
+)
 
 
 select 
 *
 from skilly
-order by skilly.salary_year_avg desc
+order by salary_year_avg desc;
